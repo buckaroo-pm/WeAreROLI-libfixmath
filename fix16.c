@@ -443,12 +443,12 @@ fix16_t fix16_div(fix16_t a, fix16_t b)
 }
 #endif
 
-#ifndef FIXMATH_NO_OVERFLOW
 /* Wrapper around fix16_div to add saturating arithmetic. */
 fix16_t fix16_sdiv(fix16_t inArg0, fix16_t inArg1)
 {
 	fix16_t result = fix16_div(inArg0, inArg1);
 	
+#ifndef FIXMATH_NO_OVERFLOW
 	if (result == fix16_overflow)
 	{
 		if ((inArg0 >= 0) == (inArg1 >= 0))
@@ -456,10 +456,10 @@ fix16_t fix16_sdiv(fix16_t inArg0, fix16_t inArg1)
 		else
 			return fix16_minimum;
 	}
+#endif
 	
 	return result;
 }
-#endif
 
 fix16_t fix16_mod(fix16_t x, fix16_t y)
 {
