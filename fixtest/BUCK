@@ -1,0 +1,13 @@
+cxx_binary(
+  name = 'fixtest',
+  header_namespace = '',
+  headers = glob([
+    '*.h',
+  ]),
+  srcs = glob([
+    '*.c',
+  ]),
+  deps = [
+    '//:fixmath'
+  ],
+)

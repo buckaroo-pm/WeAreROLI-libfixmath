@@ -1,0 +1,41 @@
+prebuilt_cxx_library(
+  name = 'unittests',
+  header_namespace = '',
+  header_only = True,
+  exported_headers = glob([
+    '*.h',
+  ]),
+)
+
+cxx_binary(
+  name = 'exp',
+  srcs = [
+    'fix16_exp_unittests.c',
+  ],
+  deps = [
+    '//:fixmath',
+    ':unittests',
+  ],
+)
+
+cxx_binary(
+  name = 'str',
+  srcs = [
+    'fix16_str_unittests.c',
+  ],
+  deps = [
+    '//:fixmath',
+    ':unittests',
+  ],
+)
+
+cxx_binary(
+  name = 'fix16',
+  srcs = [
+    'fix16_unittests.c',
+  ],
+  deps = [
+    '//:fixmath',
+    ':unittests',
+  ],
+)
